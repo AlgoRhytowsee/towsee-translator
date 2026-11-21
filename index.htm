@@ -8,11 +8,91 @@
     <title>TOWSEE | Official Code Translator</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* PASSWORD SCREEN */
+
+        #loginScreen {
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            background: #141e1b;
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid #293a33;
+        }
+
+        #loginScreen h1 {
+            color: #45d69a;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        #loginScreen p {
+            color: #91a49a;
+            margin-bottom: 20px;
+        }
+
+        #passwordInput {
+            width: 100%;
+            padding: 14px;
+            background: #0b1410;
+            color: white;
+            border: 1px solid #34473e;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        #unlockBtn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            background: #45d69a;
+            color: #07130e;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #errorMessage {
+            color: #ff6666 !important;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <main class="container">
+    <!-- PASSWORD SCREEN -->
+
+    <div id="loginScreen">
+
+        <h1>TOWSEE</h1>
+
+        <p>PRIVATE ACCESS</p>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter Password"
+        >
+
+        <button id="unlockBtn" onclick="checkPassword()">
+            UNLOCK →
+        </button>
+
+        <p id="errorMessage"></p>
+
+    </div>
+
+
+    <!-- MAIN TRANSLATOR -->
+
+    <main class="container" id="translator" style="display:none;">
 
         <header>
             <h1>TOWSEE</h1>
@@ -65,27 +145,79 @@
         </div>
 
         <footer>
-            TOWSEE CODE SYSTEM · EST. 2026 . © 2026 Ahmed Towsif. All Rights Reserved.
+            TOWSEE CODE SYSTEM · EST. 2026
+            <br>
+            © 2026 Ahmed Towsif. All Rights Reserved.
         </footer>
 
     </main>
 
+
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
     <script>
-        // Update example when translation mode changes
 
-        const originalSetMode = window.setMode;
+        // CHANGE YOUR PASSWORD HERE
 
-        document.getElementById("encodeTab").addEventListener("click", function() {
-            document.getElementById("input").placeholder =
-                "Example:Think Different";
+        const TOWSEE_PASSWORD = "TOWSEE2026";
+
+
+        // PASSWORD VERIFICATION
+
+        function checkPassword() {
+
+            const enteredPassword =
+                document.getElementById("passwordInput").value;
+
+            if (enteredPassword === TOWSEE_PASSWORD) {
+
+                document.getElementById("loginScreen").style.display = "none";
+
+                document.getElementById("translator").style.display = "block";
+
+            } else {
+
+                document.getElementById("errorMessage").textContent =
+                    "Incorrect Password! Try Again.";
+
+            }
+
+        }
+
+
+        // ENTER KEY SUPPORT
+
+        document.getElementById("passwordInput")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+
         });
 
-        document.getElementById("decodeTab").addEventListener("click", function() {
+
+        // UPDATE EXAMPLES
+
+        document.getElementById("encodeTab")
+        .addEventListener("click", function() {
+
+            document.getElementById("input").placeholder =
+                "Example: Think Different";
+
+        });
+
+
+        document.getElementById("decodeTab")
+        .addEventListener("click", function() {
+
             document.getElementById("input").placeholder =
                 "Example: 20.8.9.14.11 4.9.6.6.5.18.5.14.20";
+
         });
+
     </script>
 
 </body>
