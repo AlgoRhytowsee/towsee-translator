@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TOWSEE | Official Code Translator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <h1>TOWSEE</h1>
+            <p>OFFICIAL CODE TRANSLATOR</p>
+        </header>
+
+        <div class="tabs">
+
+            <button id="encodeTab" class="active">
+                English → Code
+            </button>
+
+            <button id="decodeTab">
+                Code → English
+            </button>
+
+        </div>
+
+        <label id="inputLabel">ENTER ENGLISH TEXT</label>
+
+        <textarea
+            id="input"
+            placeholder="Example:Think Different">
+        </textarea>
+
+        <button id="translateBtn" class="translate-btn">
+            TRANSLATE →
+        </button>
+
+        <section class="result">
+
+            <small>TRANSLATION RESULT</small>
+
+            <div id="output">
+                Your translation will appear here...
+            </div>
+
+        </section>
+
+        <div class="actions">
+
+            <button id="copyBtn" class="copy">
+                COPY RESULT
+            </button>
+
+            <button id="clearBtn" class="clear">
+                CLEAR
+            </button>
+
+        </div>
+
+        <footer>
+            TOWSEE CODE SYSTEM · EST. 2026 . © 2026 Ahmed Towsif. All Rights Reserved.
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Update example when translation mode changes
+
+        const originalSetMode = window.setMode;
+
+        document.getElementById("encodeTab").addEventListener("click", function() {
+            document.getElementById("input").placeholder =
+                "Example:Think Different";
+        });
+
+        document.getElementById("decodeTab").addEventListener("click", function() {
+            document.getElementById("input").placeholder =
+                "Example: 20.8.9.14.11 4.9.6.6.5.18.5.14.20";
+        });
+    </script>
+
+</body>
+</html>
